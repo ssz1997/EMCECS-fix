@@ -1,0 +1,5 @@
+FROM emccorp/ecs-software-3.6.0:3.6.2.0
+
+RUN sed -i '547d' /opt/storageos/conf/vnest-common-conf.xml
+
+RUN f=/opt/storageos/conf/vnest-common-conf.xml; grep -q "object.UseSeparateThreadPools" $f || sed -i '/properties id="serviceProperties"/a \ \ \ \ \ \ \ \ <prop key="object.UseSeparateThreadPools">true</prop>' $f
